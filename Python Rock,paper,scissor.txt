@@ -1,35 +1,23 @@
-contacts = {}
 
-while True:
-    print("\nMenu:")
-    print("1. Add Contact")
-    print("2. Delete Contact")
-    print("3. Display Contacts")
-    print("4. Quit")
+import random
 
-    choice = input("Enter your choice: ")
+print("Welcome to Rock, Paper, Scissors!")
 
-    if choice == "1":
-        name = input("Enter contact name: ")
-        number = input("Enter contact number: ")
-        contacts[name] = number
-        print("Contact added successfully.")
-    elif choice == "2":
-        name = input("Enter contact name to delete: ")
-        if name in contacts:
-            del contacts[name]
-            print("Contact deleted successfully.")
-        else:
-            print("Contact not found.")
-    elif choice == "3":
-        if contacts:
-            print("Contact List:")
-            for name, number in contacts.items():
-                print(f"{name}: {number}")
-        else:
-            print("Contact book is empty.")
-    elif choice == "4":
-        print("Thank you for using the Contact Book.")
-        break
-    else:
-        print("Invalid choice. Please enter a number from 1 to 4.")
+user_choice = input("Enter your choice (rock, paper, or scissors): ").lower()
+while user_choice not in ["rock", "paper", "scissors"]:
+    print("Invalid choice. Please enter rock, paper, or scissors.")
+    user_choice = input("Enter your choice (rock, paper, or scissors): ").lower()
+
+computer_choice = random.choice(["rock", "paper", "scissors"])
+
+print("Your choice:", user_choice)
+print("Computer's choice:", computer_choice)
+
+if user_choice == computer_choice:
+    print("It's a tie!")
+elif (user_choice == "rock" and computer_choice == "scissors") or \
+     (user_choice == "paper" and computer_choice == "rock") or \
+     (user_choice == "scissors" and computer_choice == "paper"):
+    print("You win!")
+else:
+    print("Computer wins!")
